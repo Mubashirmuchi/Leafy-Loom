@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AuthLayout from "./Layouts/AuthLayout";
 import Signup from "./Pages/Auth/Signup";
-import { checkAuthorization, login } from "./Store/UserSlice";
+import { checkAuthorization } from "./Store/UserSlice";
 import { useDispatch } from "react-redux";
 const router = createBrowserRouter([
     {
@@ -45,7 +45,7 @@ const App = () => {
 
     useEffect(() => {
         dispatch(checkAuthorization());
-    }, []);
+    }, [dispatch]);
 
     return (
         <>

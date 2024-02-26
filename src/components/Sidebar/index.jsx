@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./../Navbar";
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Logout, Setting, Setting2, Setting3, Setting4, Setting5, Settings } from "iconsax-react";
 import { logout } from "../../Store/UserSlice";
@@ -89,11 +89,6 @@ const index = () => {
                     </ul>
                 </div>
             </div>
-            <ToastContainer
-                style={{ width: "auto", minWidth: "340px", maxWidth: "450px" }}
-                position={"bottom-right"}
-                bodyStyle={{ color: "#756f86" }}
-            />
         </>
     );
 };

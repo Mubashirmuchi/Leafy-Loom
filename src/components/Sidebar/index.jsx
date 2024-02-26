@@ -89,11 +89,6 @@ const index = () => {
                     </ul>
                 </div>
             </div>
-            <ToastContainer
-                style={{ width: "auto", minWidth: "340px", maxWidth: "450px" }}
-                position={"bottom-right"}
-                bodyStyle={{ color: "#756f86" }}
-            />
         </>
     );
 };

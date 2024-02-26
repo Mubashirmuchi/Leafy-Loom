@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
 import Bgimage from "../../assets/photo-1604714628334-febaf95facde.avif";
 import LeafSvg from "../../assets/leaf.svg";
-import { ToastContainer } from "react-toastify";
 
 const AuthLayout = () => {
     const { isAuthenticated, user } = useSelector((store) => store.user);

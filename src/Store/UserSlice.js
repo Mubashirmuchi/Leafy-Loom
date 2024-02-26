@@ -7,9 +7,9 @@ export const login = createAsyncThunk("user/login", async (params, { rejectWithV
     try {
         const response = await AuthService.login(params);
         if (SUCCESS_CODES.includes(response.status) && response?.data) {
-            toast.success("Logged in successfull");
             localStorage.setItem("access_token", response.data?.token);
             localStorage.setItem("user", JSON.stringify(response.data));
+            toast.success("Logged in successfull");
             return response.data;
         } else {
             return rejectWithValue(response?.response?.status === 500 ? "Something went wrong" : response?.response?.data);

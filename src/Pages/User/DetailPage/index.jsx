@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { products3 } from "../../../DummyData/data";
 import { Edit, Trash } from "iconsax-react";
+import axios from "axios";
 
 const Detailpage = () => {
+    const [product, setProduct] = useState([]);
     const { id } = useParams();
-    const product3 = products3.find((product) => product.id === parseInt(id, 10));
+
+    useEffect(() => {
+        axios
+            .get("http://localhost:8000/api/post/allplants")
+            .then((res) => {
+                setProduct(res.data.data);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }, []);
+
+    const newproduct = product.find((item) => item._id == id);
 
     return (
         <div className=" sm:ml-64 w-full ">
@@ -23,14 +36,14 @@ const Detailpage = () => {
                         Delete
                     </button>
                 </div>{" "} */}
-            </div>{" "}
+            </div>
             <div className="flex p-2 ">
                 <div className="first w-[75%] border border-gray-200 rounded-md p-2 ">
-                    <img className="object-cover m-auto rounded-md" src={product3.imageSrc} alt="" />
+                    <img className="object-cover m-auto rounded-md" src={newproduct && newproduct.url} alt="" />
                 </div>
                 <div className="first w-full mb-2">
                     <div className="content w-[80%] m-auto pt-5">
-                        <h1 className="text-2xl font-medium">Peace Lilly Plant</h1>{" "}
+                        <h1 className="text-2xl font-medium">{newproduct && newproduct.name}</h1>
                         <p className="pt-3">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis vitae corrupti deserunt
                             minima vel assumenda laboriosam? Saepe mollitia, vel iure exercitationem, delectus ullam iusto
@@ -39,7 +52,7 @@ const Detailpage = () => {
                         <table className="w-full text-sm text-left rtl:text-right text-gray-500 accordian border  border-gray-200 rounded-md p-3 my-5">
                             <thead className="text-xs text-gray-700 uppercase bg-gray-50">
                                 <tr>
-                                    <th scope="col" class="px-6 py-3">
+                                    <th scope="col" className="px-6 py-3">
                                         <div className="svg flex items-center gap-2">
                                             <img
                                                 className="w-10"
@@ -84,11 +97,10 @@ const Detailpage = () => {
                                         </p>
                                     </th>
                                 </tr>
-                            </tbody>{" "}
+                            </tbody>
                             <thead className="text-xs text-gray-700 uppercase bg-gray-50">
                                 <tr>
                                     <th scope="col" className="px-6 py-3">
-                                        {" "}
                                         <div className="svg flex items-center gap-2">
                                             <img
                                                 className="w-10"

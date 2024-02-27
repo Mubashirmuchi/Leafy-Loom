@@ -29,7 +29,7 @@ const index = () => {
                                     style={{ border: "none" }}
                                     type="text"
                                     placeholder="Search Name or ID "
-                                    className="border-none"
+                                    className="border-none  focus:outline-none "
                                 />
                             </div>
 

@@ -94,7 +94,6 @@ const userSlice = createSlice({
                 state.isAuthenticated = false;
                 state.loading = false;
                 state.user = null;
-                console.log("ch error", action.error);
                 if (action.error.message === "Request failed with status code 404") {
                     state.error = "Access denied invalid Credentials";
                     state.error = null;

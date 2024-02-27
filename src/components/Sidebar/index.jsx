@@ -23,8 +23,9 @@ const index = () => {
                     <ul className="space-y-2 font-medium">
                         <li>
                             <div
-                                onClick={() => toast.success("Wow so easy!")}
-                                href="#"
+                                onClick={() => {
+                                    console.log("hi");
+                                }}
                                 className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-300  group"
                             >
                                 <svg

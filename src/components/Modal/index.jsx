@@ -1,16 +1,39 @@
-import React from "react";
-//  {/* // <!-- Modal toggle --> */}
-//  <button
-//  data-modal-target="crud-modal"
-//  data-modal-toggle="crud-modal"
-//  className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-//  type="button"
-// >
-//  Toggle modal
-// </button>
+import axios from "axios";
+import React, { useState } from "react";
+import { toast } from "react-toastify";
+
 const index = ({ setModalOpen }) => {
-    const handleclick = () => {
-        alert("item added");
+    const [data, setData] = useState({});
+    const [image, setImage] = useState(null);
+    const [imageUrl, setImageUrl] = useState("");
+
+    const handlechange = (e) => {
+        setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    };
+    const handleImage = (e) => {
+        const selectedImage = e.target.files[0];
+        setImage(selectedImage);
+        setImageUrl(URL.createObjectURL(selectedImage)); // Create URL for the selected image
+    };
+    console.log(data);
+
+    const handleApi = () => {
+        const formdata = new FormData();
+        formdata.append("testimage", image);
+        Object.entries(data).forEach(([key, value]) => {
+            formdata.append(key, value);
+            toast.success("Successfully Uploaded");
+        });
+
+        axios
+            .post("http://localhost:8000/api/post", formdata)
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
         setModalOpen(false);
     };
 
@@ -20,7 +43,7 @@ const index = ({ setModalOpen }) => {
             <div className="flex justify-center items-center  overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
                 <div
                     id="crud-modal"
-                    tabindex="-1"
+                    tabIndex="-1"
                     aria-hidden="true"
                     className=" overflow-y-auto overflow-x-hidden flex fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
                 >
@@ -55,73 +78,73 @@ const index = ({ setModalOpen }) => {
                                 </button>
                             </div>
                             {/* <!-- Modal body --> */}
-                            <form className="p-4 md:p-5">
+                            <div className="p-4 md:p-5">
                                 <div className="grid gap-4 mb-4 grid-cols-2">
                                     <div className="col-span-2">
-                                        <label for="name" className="block mb-2 text-sm font-medium text-gray-900 ">
+                                        <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 ">
                                             Name
                                         </label>
                                         <input
+                                            onChange={handlechange}
                                             type="text"
                                             name="name"
                                             id="name"
-                                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:border-gray-300 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                                             placeholder="Type scientific name"
                                             required=""
                                         />
                                     </div>
-                                    <div className="col-span-2 sm:col-span-1">
+                                    <div className="col-span-2 sm:col-span-1 ">
                                         <label
-                                            for="price"
-                                            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                            className="block mb-2 text-sm font-medium text-gray-900"
+                                            htmlFor="default_size"
                                         >
-                                            Price
+                                            Default size
                                         </label>
                                         <input
-                                            type="number"
-                                            name="price"
-                                            id="price"
-                                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray-300 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                            placeholder="$2999"
-                                            required=""
+                                            onChange={handleImage}
+                                            className="block mb-2  font-medium cursor-pointer  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600  w-full p-2 "
+                                            id="default_size"
+                                            type="file"
                                         />
                                     </div>
                                     <div className="col-span-2 sm:col-span-1">
                                         <label
-                                            for="category"
+                                            htmlFor="category"
                                             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                                         >
                                             Category
                                         </label>
                                         <select
-                                            id="category"
-                                            className="bg-gray-50 border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5  dark:border-gray-500 dark:placeholder-gray-400  dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                            onChange={handlechange}
+                                            name="category"
+                                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5  dark:border-gray-500 dark:placeholder-gray-400  dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         >
-                                            <option selected="">Select category</option>
-                                            <option value="TV">Anglosperms</option>
-                                            <option value="PC">Flowers</option>
-                                            <option value="GA">Genus</option>
-                                            <option value="PH">Herbaceous Plants</option>
+                                            <option defaultValue="">Select category</option>
+                                            <option value="Anglosperms">Anglosperms</option>
+                                            <option value="Flowers">Flowers</option>
+                                            <option value="Genus">Genus</option>
+                                            <option value="Herbaceous">Herbaceous Plants</option>
                                         </select>
                                     </div>
                                     <div className="col-span-2">
                                         <label
-                                            for="description"
+                                            htmlFor="description"
                                             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                                         >
                                             Product Description
                                         </label>
                                         <textarea
-                                            id="description"
+                                            onChange={handlechange}
+                                            name="description"
                                             rows="4"
-                                            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                                             placeholder="Write product description here"
                                         ></textarea>
                                     </div>
                                 </div>
                                 <button
-                                    onClick={() => handleclick}
-                                    type="submit"
+                                    onClick={handleApi}
                                     className="text-white inline-flex items-center bg-green-700 hover:bg-blue-800  focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 "
                                 >
                                     <svg
@@ -138,7 +161,7 @@ const index = ({ setModalOpen }) => {
                                     </svg>
                                     Add new product
                                 </button>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>

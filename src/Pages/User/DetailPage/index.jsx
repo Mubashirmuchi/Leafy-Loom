@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Edit, Trash } from "iconsax-react";
+import jug from "../../../assets/Water-2_2x_e01f383f-4647-47cf-a82f-31ff906cf3f3_small.webp";
+import sunLight from "../../../assets/Sunlight-2_2x_c2ce9dfa-edf9-4a1d-94fa-4e01e6baea45_small.png";
+import maintainance from "../../../assets/Maintainance-1_2x_809fc5b5-c212-4f22-803b-50241e478b2f_small.avif";
 import axios from "axios";
 
 const Detailpage = () => {
@@ -54,11 +57,7 @@ const Detailpage = () => {
                                 <tr>
                                     <th scope="col" className="px-6 py-3">
                                         <div className="svg flex items-center gap-2">
-                                            <img
-                                                className="w-10"
-                                                src="https://www.ugaoo.com/cdn/shop/files/Water-2_2x_e01f383f-4647-47cf-a82f-31ff906cf3f3_small.png?v=1656923200"
-                                                alt=""
-                                            />
+                                            <img className="w-10" src={jug} alt="" />
                                             <span>Water Twice A Week</span>
                                         </div>
                                     </th>
@@ -78,11 +77,7 @@ const Detailpage = () => {
                                 <tr>
                                     <th scope="col" className="px-6 py-3">
                                         <div className="svg flex items-center gap-2">
-                                            <img
-                                                className="w-10"
-                                                src="https://www.ugaoo.com/cdn/shop/files/Sunlight-2_2x_c2ce9dfa-edf9-4a1d-94fa-4e01e6baea45_small.png?v=1656923265"
-                                                alt=""
-                                            />
+                                            <img className="w-10" src={sunLight} alt="" />
                                             <span>Needs Bright Indirect Sunlight</span>
                                         </div>
                                     </th>
@@ -102,11 +97,7 @@ const Detailpage = () => {
                                 <tr>
                                     <th scope="col" className="px-6 py-3">
                                         <div className="svg flex items-center gap-2">
-                                            <img
-                                                className="w-10"
-                                                src="https://www.ugaoo.com/cdn/shop/files/Maintainance-1_2x_809fc5b5-c212-4f22-803b-50241e478b2f_small.png?v=1656923507"
-                                                alt=""
-                                            />
+                                            <img className="w-10" src={maintainance} alt="" />
                                             <span>Not Pet Friendly</span>
                                         </div>
                                     </th>

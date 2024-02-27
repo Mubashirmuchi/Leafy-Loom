@@ -1,9 +1,5 @@
 import React from "react";
-import Navbar from "./../Navbar";
-
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { Logout, Setting, Setting2, Setting3, Setting4, Setting5, Settings } from "iconsax-react";
+import { Logout, Setting5 } from "iconsax-react";
 import { logout } from "../../Store/UserSlice";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -31,7 +27,6 @@ const index = () => {
                                 <svg
                                     className="w-5 h-5 text-gray-500 transition duration-75 "
                                     aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg"
                                     fill="currentColor"
                                     viewBox="0 0 22 21"
                                 >
@@ -46,7 +41,6 @@ const index = () => {
                                 <svg
                                     className="flex-shrink-0 w-5 h-5  text-gray-500 hover:text-gray-900 transition duration-75  "
                                     aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg"
                                     fill="currentColor"
                                     viewBox="0 0 18 20"
                                 >
@@ -60,7 +54,6 @@ const index = () => {
                                 <svg
                                     className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                                     aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg"
                                     fill="currentColor"
                                     viewBox="0 0 20 18"
                                 >

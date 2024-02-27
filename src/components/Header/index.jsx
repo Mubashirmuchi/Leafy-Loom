@@ -36,6 +36,7 @@ const index = () => {
                             <button className="bg-blue-500   rounded-md ml-2 hover:bg-blue-600"></button>
                         </div>
                     </div>
+
                     <div>
                         <div className=" min-w-[128px] rounded-lg  p-[10px]  flex justify-center items-center border solid border-[#E7EAEF]">
                             <button className=" text-gray-500 flex gap-[8px] rounded-md ml-2 ">

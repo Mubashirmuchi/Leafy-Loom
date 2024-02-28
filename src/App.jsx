@@ -3,7 +3,7 @@ import Login from "./Pages/Auth/Login";
 import ProductPage from "./Pages/User/ProductPage";
 import DetailPage from "./Pages/User/DetailPage";
 import UserLayout from "./Layouts/UserLAyout/index";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AuthLayout from "./Layouts/AuthLayout";

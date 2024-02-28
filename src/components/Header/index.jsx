@@ -6,7 +6,7 @@ const index = () => {
     return (
         <>
             {modalOpen && <Modal setModalOpen={setModalOpen} />}
-            <div className="bg-white border-grey-300 border-b-2 w-[84%]  fixed flex justify-between pr-[25px]  items-center py-[10px]">
+            <div className="bg-white z-40 border-grey-300 border-b-2 w-[84%]  fixed flex justify-between pr-[25px]  items-center py-[10px]">
                 <div className=" flex gap-[16px] items-center justify-center pl-[25px]">
                     <div>
                         <h2 className="text-[20px] text-cyan-950 font-medium">Products</h2>

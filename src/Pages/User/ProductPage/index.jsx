@@ -1,27 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from "../../../components/Header";
 import Card from "../../../components/Card";
 import Modal from "../../../components/Modal";
-import Cardwo from "../../../components/Cardwithoptions";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import useProduct from "./useProduct";
 const index = () => {
-    const [product, setProduct] = useState([]);
-    const [modalOpen, setModalOpen] = useState(false);
-    const [editId, setEditId] = useState(null);
-    const [option, setOptionOpen] = useState(false);
-    useEffect(() => {
-        axios
-            .get("http://localhost:8000/api/post/allplants")
-            .then((res) => {
-                setProduct(res.data.data);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    }, []);
-
-    console.log("del edit id", typeof editId);
+    const { product, loading, modalOpen, option, editId, setModalOpen, setEditId, setOptionOpen, deletePlant } =
+        useProduct();
 
     return (
         <>
@@ -66,17 +51,15 @@ const index = () => {
                                                         aria-labelledby="dropdownButton"
                                                     >
                                                         <li>
-                                                            <button className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">
+                                                            <button className=" py-2 text-sm w-full text-gray-700 hover:bg-gray-200 ">
                                                                 Edit
                                                             </button>
                                                         </li>
 
                                                         <li>
                                                             <button
-                                                                onClick={() =>
-                                                                    axios.get("http://localhost:8000/api/post/del", editId)
-                                                                }
-                                                                className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+                                                                onClick={deletePlant}
+                                                                className=" w-full py-2 text-sm text-red-600 hover:bg-gray-200"
                                                             >
                                                                 Delete
                                                             </button>

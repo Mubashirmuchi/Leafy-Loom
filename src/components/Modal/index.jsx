@@ -22,12 +22,12 @@ const index = ({ setModalOpen }) => {
         formdata.append("testimage", image);
         Object.entries(data).forEach(([key, value]) => {
             formdata.append(key, value);
-            toast.success("Successfully Uploaded");
         });
 
         axios
             .post("http://localhost:8000/api/post", formdata)
             .then((res) => {
+                toast.success("Successfully Uploaded");
                 console.log(res);
             })
             .catch((error) => {

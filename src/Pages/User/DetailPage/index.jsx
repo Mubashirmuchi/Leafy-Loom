@@ -1,44 +1,18 @@
-import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Edit, Trash } from "iconsax-react";
 import jug from "../../../assets/Water-2_2x_e01f383f-4647-47cf-a82f-31ff906cf3f3_small.webp";
 import sunLight from "../../../assets/Sunlight-2_2x_c2ce9dfa-edf9-4a1d-94fa-4e01e6baea45_small.png";
 import maintainance from "../../../assets/Maintainance-1_2x_809fc5b5-c212-4f22-803b-50241e478b2f_small.avif";
-import axios from "axios";
+import useProduct from "../ProductPage/useProduct";
 
 const Detailpage = () => {
-    const [product, setProduct] = useState([]);
     const { id } = useParams();
-
-    useEffect(() => {
-        axios
-            .get("http://localhost:8000/api/post/allplants")
-            .then((res) => {
-                setProduct(res.data.data);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    }, []);
-
+    const { product } = useProduct();
     const newproduct = product.find((item) => item._id == id);
 
     return (
         <div className=" sm:ml-64 w-full ">
             <div className="head flex justify-between  items-center p-2">
                 <h2 className=" pl-2 text-xl font-semibold text-gray-600">Products</h2>
-                {/* <div className="flex gap-2">
-                    {" "}
-                    <button className="border  text-[#A3B1C0] p-3 rounded-md flex ">
-                        {" "}
-                        <Edit />
-                        Edit
-                    </button>
-                    <button className="border text-[#A3B1C0] flex p-3 rounded-md mr-6 ">
-                        <Trash color="#A3B1C0" />
-                        Delete
-                    </button>
-                </div>{" "} */}
             </div>
             <div className="flex p-2 ">
                 <div className="first w-[75%] border border-gray-200 rounded-md p-2 ">

@@ -3,4 +3,5 @@ export const API = {
     REGISTER: "/api/auth/register", // Create Account
     UploadPlantDetails: "/api/post", // Upload plant details
     GetAllPlants: "/api/post/allplants", // Get all plant details
+    DeleteAPlant: "/api/post",
 };

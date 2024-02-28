@@ -1,12 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
-import { Edit, Trash } from "iconsax-react";
-import Modal from "../../components/Modal";
-
-const index = ({ product, option, editId }) => {
+const index = ({ product }) => {
     return (
         <>
-            {" "}
             <div className=" p-2 h-full">
                 <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg  xl:aspect-h-8 xl:aspect-w-7">
                     <img src={product.url} alt={product.name} className="h-[234.2px]" />

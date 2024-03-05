@@ -1,54 +1,59 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import LeafLogo from "../../assets/leaf.svg";
 
-const index = () => {
+const index = ({ setIsSidebarVisible }) => {
     const [user] = useState(useSelector((store) => store.user.user?.user));
     return (
-        <nav className="bg-white   border-grey-300 border-b-2 sticky z-50 top-0">
-            <div className="max-w-[1450px] flex flex-wrap items-center justify-between mx-auto p-4">
-                <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-                    <div className="flex text-slate-700 items-center gap-5 mx-auto mb-3">
-                        <img className="w-auto h-20 sm:h-8" src="../src/assets/leaf.svg" alt="leaf" />
-                        <span className="self-center text-2xl font-semibold whitespace-nowrap ">Leafy Loom</span>
-                    </div>
-                </Link>
-
-                <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-3" id="navbar-search">
-                    <div className="relative mt-3 md:hidden">
-                        <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+        <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200">
+            <div class="px-3 py-3 lg:px-5 lg:pl-3">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center justify-start rtl:justify-end">
+                        <button
+                            onClick={() => setIsSidebarVisible((prev) => !prev)}
+                            className="hamburger-button"
+                            data-drawer-target="logo-sidebar"
+                            data-drawer-toggle="logo-sidebar"
+                            aria-controls="logo-sidebar"
+                            type="button"
+                            class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 "
+                        >
+                            <span class="sr-only">Open sidebar</span>
                             <svg
-                                className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                                class="w-6 h-6"
                                 aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
+                                fill="currentColor"
                                 viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg"
                             >
                                 <path
-                                    stroke="currentColor"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                                />
+                                    clip-rule="evenodd"
+                                    fill-rule="evenodd"
+                                    d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+                                ></path>
                             </svg>
-                        </div>
-                        <input
-                            type="text"
-                            id="search-navbar"
-                            className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Search..."
-                        />
+                        </button>
+                        <Link to="/" class="flex ms-2 md:me-24">
+                            <img src={LeafLogo} className="h-8 me-3" alt="LeafyLoom Logo" />
+                            <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap ">LeafyLoom</span>
+                        </Link>
                     </div>
-                    <ul className="flex flex-col p-4 md:p-0 items-center mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
-                        <li>
-                            <div className="relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full">
-                                <div className="absolute w-12 h-12 text-gray-400 -left-1">
-                                    <img src={user.profilePicture} alt="profile" />
-                                </div>
+                    <div class="flex items-center">
+                        <div class="flex items-center ms-3">
+                            <div>
+                                <button
+                                    type="button"
+                                    class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 "
+                                    aria-expanded="false"
+                                    data-dropdown-toggle="dropdown-user"
+                                >
+                                    <span class="sr-only">Open user menu</span>
+                                    <img class="w-8 h-8 rounded-full" src={user?.profilePicture} alt="user photo" />
+                                </button>
                             </div>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>

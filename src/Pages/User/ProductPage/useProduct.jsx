@@ -34,7 +34,7 @@ const useProduct = () => {
             .then((res) => {
                 if (SUCCESS_CODES.includes(res.status)) {
                     setOptionOpen(false);
-                    toast.success("The Plant has been deleted successfully.");
+                    toast.success("The item has been deleted successfully.");
                     setEditId("");
                 } else {
                     toast.error("Something use else went wrong");

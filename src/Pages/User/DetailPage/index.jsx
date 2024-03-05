@@ -10,7 +10,7 @@ const Detailpage = () => {
     const newproduct = product.find((item) => item._id == id);
 
     return (
-        <div className=" sm:ml-64 w-full ">
+        <div className="w-full ">
             <div className="head flex justify-between  items-center p-2">
                 <h2 className=" pl-2 text-xl font-semibold text-gray-600">Products</h2>
             </div>
